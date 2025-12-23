@@ -137,3 +137,79 @@ person = Person("Ali", 18)
 print(person.get_salary())
 person.set_salary(60000)
 print(person.get_salary())
+
+
+
+################################# 9. Method Resolution Order (MRO)
+
+class A:
+    def method(self):
+        print("Method from class A")
+
+class B(A):
+    def method(self):
+        print("Method from class B")
+
+class C(A):
+    def method(self):
+        print("Method from class C")
+
+class D(B, C):
+    pass
+
+# Test
+d = D()
+d.method()
+print(D.mro())
+
+
+################################# 10. Overriding va Overloading (Metodlarni o'zgartirish va ortiqcha yuklash)
+
+class Circle:
+    def area(self, radius=None):
+        if radius is not None:
+            area =  3.14 * radius * radius
+            print(f"Area of circle: {area}")
+        else:
+            print("Area of Circle: Default area")
+
+circle = Circle()
+circle.area(5)
+circle.area()
+
+
+################################# 11. Composition (Kompozitsiya)
+
+class Engine:
+    def start(self):
+        print("Engine started")
+
+class Car:
+    def __init__(self):
+        self.engine = Engine()
+
+    def start(self):
+        self.engine.start()
+        print("Car started")
+        
+
+car = Car()
+car.start()
+
+
+################################# 12. Multiple Inheritance (Ko'p meros olish)
+
+class A:
+    def method(self):
+        print("Method from class A")
+
+class B:
+    def method(self):
+        print("Method from class B")
+
+class C(A, B):
+    pass
+
+c = C()
+print(C.mro())
+c.method()
